@@ -1,0 +1,263 @@
+#1
+
+def encontrar_posicion_maximo(lista):
+  maximo = lista[0]
+  posicion = 0
+
+  for i in range(1, len(lista)):
+      if lista[i] > maximo:
+          maximo = lista[i]
+          posicion = i
+
+  return posicion
+
+# Leer 10 enteros y almacenarlos en una lista
+numeros = []
+for i in range(10):
+  num = int(input(f"Ingrese el entero #{i+1}: "))
+  numeros.append(num)
+
+# Determinar la posición del máximo número en la lista
+posicion_maximo = encontrar_posicion_maximo(numeros)
+
+print(f"El máximo número ingresado es {numeros[posicion_maximo]} y está en la posición {posicion_maximo}.")
+
+#2
+
+def encontrar_posicion_maximo_par(lista):
+  maximo_par = None
+  posicion = -1
+
+  for i in range(len(lista)):
+      if lista[i] % 2 == 0:  # Verificar si el número es par
+          if maximo_par is None or lista[i] > maximo_par:
+              maximo_par = lista[i]
+              posicion = i
+
+  return posicion
+
+# Leer 10 enteros y almacenarlos en una lista
+numeros = []
+for i in range(10):
+  num = int(input(f"Ingrese el entero #{i+1}: "))
+  numeros.append(num)
+
+# Determinar la posición del máximo número par en la lista
+posicion_maximo_par = encontrar_posicion_maximo_par(numeros)
+
+if posicion_maximo_par != -1:
+  print(f"El máximo número par ingresado es {numeros[posicion_maximo_par]} y está en la posición {posicion_maximo_par}.")
+else:
+  print("No se ingresaron números pares.")
+
+#1
+
+def es_primo(n):
+  if n <= 1:
+      return False
+  for i in range(2, int(n**0.5) + 1):
+      if n % i == 0:
+          return False
+  return True
+
+def encontrar_posicion_maximo_primo(lista):
+  maximo_primo = None
+  posicion = -1
+
+  for i in range(len(lista)):
+      if es_primo(lista[i]):
+          if maximo_primo is None or lista[i] > maximo_primo:
+              maximo_primo = lista[i]
+              posicion = i
+
+  return posicion
+
+# Leer 10 enteros y almacenarlos en una lista
+numeros = []
+for i in range(10):
+  num = int(input(f"Ingrese el entero #{i+1}: "))
+  numeros.append(num)
+
+# Determinar la posición del máximo número primo en la lista
+posicion_maximo_primo = encontrar_posicion_maximo_primo(numeros)
+
+if posicion_maximo_primo != -1:
+  print(f"El máximo número primo ingresado es {numeros[posicion_maximo_primo]} y está en la posición {posicion_maximo_primo}.")
+else:
+  print("No se ingresaron números primos.")
+
+#4
+
+def es_digito_primo(digito):
+  return digito in {2, 3, 5, 7}
+
+def contar_numeros_con_digito_primo(lista):
+  contador = 0
+  for num in lista:
+      primer_digito = int(str(abs(num))[0])  # Convertir a string y tomar el primer dígito
+      if es_digito_primo(primer_digito):
+          contador += 1
+  return contador
+
+# Leer 10 enteros y almacenarlos en una lista
+numeros = []
+for i in range(10):
+  num = int(input(f"Ingrese el entero #{i+1}: "))
+  numeros.append(num)
+
+# Contar cuántos números comienzan con un dígito primo
+cantidad_digito_primo = contar_numeros_con_digito_primo(numeros)
+
+print(f"{cantidad_digito_primo} números comienzan con un dígito primo.")
+
+#5
+
+def es_primo(n):
+  if n <= 1:
+      return False
+  for i in range(2, int(n**0.5) + 1):
+      if n % i == 0:
+          return False
+  return True
+
+def contar_digitos_pares(n):
+  count = 0
+  for digito in str(abs(n)):  # Convertir a string y tomar cada dígito
+      if int(digito) % 2 == 0:
+          count += 1
+  return count
+
+def encontrar_posicion_primo_max_digitos_pares(lista):
+  max_digitos_pares = -1
+  posicion = -1
+
+  for i in range(len(lista)):
+      if es_primo(lista[i]):
+          digitos_pares = contar_digitos_pares(lista[i])
+          if digitos_pares > max_digitos_pares:
+              max_digitos_pares = digitos_pares
+              posicion = i
+
+  return posicion
+
+# Leer 10 enteros y almacenarlos en una lista
+numeros = []
+for i in range(10):
+  num = int(input(f"Ingrese el entero #{i+1}: "))
+  numeros.append(num)
+
+# Determinar la posición del número primo con mayor cantidad de dígitos pares
+posicion_primo_max_digitos_pares = encontrar_posicion_primo_max_digitos_pares(numeros)
+
+if posicion_primo_max_digitos_pares != -1:
+  print(f"El número primo con mayor cantidad de dígitos pares es {numeros[posicion_primo_max_digitos_pares]} y está en la posición {posicion_primo_max_digitos_pares}.")
+else:
+  print("No se ingresaron números primos.")
+
+#6
+
+def tiene_mas_de_tres_digitos(n):
+  return len(str(abs(n))) > 3
+
+def encontrar_posiciones_mas_de_tres_digitos(lista):
+  posiciones = []
+  for i in range(len(lista)):
+      if tiene_mas_de_tres_digitos(lista[i]):
+          posiciones.append(i)
+  return posiciones
+
+# Leer 10 enteros y almacenarlos en una lista
+numeros = []
+for i in range(10):
+  num = int(input(f"Ingrese el entero #{i+1}: "))
+  numeros.append(num)
+
+# Determinar las posiciones de los números con más de 3 dígitos
+posiciones_mas_de_tres_digitos = encontrar_posiciones_mas_de_tres_digitos(numeros)
+
+if posiciones_mas_de_tres_digitos:
+  print(f"Los números con más de 3 dígitos se encuentran en las posiciones: {posiciones_mas_de_tres_digitos}")
+else:
+  print("No se ingresaron números con más de 3 dígitos.")
+
+#7
+
+def tiene_mas_de_tres_digitos(n):
+  return len(str(abs(n))) > 3
+
+def encontrar_posiciones_mas_de_tres_digitos(lista):
+  posiciones = []
+  for i in range(len(lista)):
+      if tiene_mas_de_tres_digitos(lista[i]):
+          posiciones.append(i)
+  return posiciones
+
+# Leer 10 enteros y almacenarlos en una lista
+numeros = []
+for i in range(10):
+  num = int(input(f"Ingrese el entero #{i+1}: "))
+  numeros.append(num)
+
+# Determinar las posiciones de los números con más de 3 dígitos
+posiciones_mas_de_tres_digitos = encontrar_posiciones_mas_de_tres_digitos(numeros)
+
+if posiciones_mas_de_tres_digitos:
+  print(f"Los números con más de 3 dígitos se encuentran en las posiciones: {posiciones_mas_de_tres_digitos}")
+else:
+  print("No se ingresaron números con más de 3 dígitos.")
+
+#8
+
+def contar_numeros_negativos(lista):
+  contador = 0
+  for num in lista:
+      if num < 0:
+          contador += 1
+  return contador
+
+# Leer 10 enteros y almacenarlos en una lista
+numeros = []
+for i in range(10):
+  num = int(input(f"Ingrese el entero #{i+1}: "))
+  numeros.append(num)
+
+# Contar cuántos números negativos hay en la lista
+cantidad_negativos = contar_numeros_negativos(numeros)
+
+print(f"Hay {cantidad_negativos} números negativos en la lista.")
+
+#9
+
+import math
+
+# Leer 10 enteros y almacenarlos en una lista
+numeros = []
+for i in range(10):
+    num = int(input(f"Ingrese el entero #{i+1}: "))
+    numeros.append(num)
+
+# Calcular el factorial de cada número y almacenarlo en otra lista
+factoriales = [math.factorial(num) for num in numeros]
+
+# Imprimir los resultados
+print("Números ingresados:", numeros)
+print("Factoriales de los números:", factoriales)
+
+#10
+
+# Leer 10 enteros y almacenarlos en una lista
+numeros = []
+for i in range(10):
+    num = int(input(f"Ingrese el entero #{i+1}: "))
+    numeros.append(num)
+
+# Leer un entero adicional
+num_adicional = int(input("Ingrese un número entero adicional: "))
+
+# Contar cuántos números en la lista son divisores exactos del número adicional
+contador_divisores = 0
+for num in numeros:
+    if num != 0 and num_adicional % num == 0:  # Verificar que el número en la lista no sea 0 para evitar división por 0
+        contador_divisores += 1
+
+print(f"El número {num_adicional} tiene {contador_divisores} divisores exactos en la lista.")
